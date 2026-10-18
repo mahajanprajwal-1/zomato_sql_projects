@@ -1,0 +1,121 @@
+restaurant_id,restaurant_name,city,opening_hours
+1,Desi Darbar - Gomti Nagar,Mumbai,11:00 AM - 11:59 PM
+2,Classic Handi,Mumbai,10:00 AM - 12:00 AM
+3,Little Pizza Hub - Vaishali Nagar,Mumbai,10:30 AM - 11:30 PM
+4,Silver Grill,Mumbai,07:00 AM - 10:00 PM
+5,Classic Udupi,Mumbai,11:30 AM - 10:30 PM
+6,Fresh Wok Express,Mumbai,09:00 AM - 10:00 PM
+7,Punjabi Bakery - Banjara Hills,Mumbai,11:30 AM - 10:30 PM
+8,Hungry Greens - Andheri,Mumbai,09:00 AM - 10:00 PM
+9,Madras Rolls Junction - T Nagar,Mumbai,10:30 AM - 11:30 PM
+10,Spice Chowk,Mumbai,11:00 AM - 11:00 PM
+11,Smoky Biryani House,Mumbai,24 Hours
+12,Big Greens,Mumbai,12:00 PM - 11:00 PM
+13,Big Tales,Delhi,11:30 AM - 10:30 PM
+14,Desi Dum Pukht - Gomti Nagar,Delhi,08:00 AM - 09:00 PM
+15,Green Oven,Delhi,07:00 AM - 10:00 PM
+16,Smoky Grill - Vaishali Nagar,Delhi,08:00 AM - 09:00 PM
+17,Little Dosa Corner - T Nagar,Delhi,07:00 AM - 10:00 PM
+18,Hungry Wok Express,Delhi,09:00 AM - 10:00 PM
+19,Namaste Cake Studio,Delhi,24 Hours
+20,Silver Bowl,Delhi,12:00 PM - 11:00 PM
+21,Urban Roll Station,Delhi,12:00 PM - 11:00 PM
+22,Classic Street Eats - Indiranagar,Delhi,08:00 AM - 09:00 PM
+23,Silver Bites,Delhi,11:00 AM - 11:00 PM
+24,Spice Pizza Hub,Delhi,10:00 AM - 12:00 AM
+25,Namaste Darbar - Navrangpura,Bengaluru,11:30 AM - 10:30 PM
+26,Little Biryani House,Bengaluru,12:00 PM - 11:00 PM
+27,Spice Oven - T Nagar,Bengaluru,09:00 AM - 10:00 PM
+28,Madras Bites - Vaishali Nagar,Bengaluru,11:00 AM - 11:00 PM
+29,Silver Dosa Corner,Bengaluru,
+30,Classic Dragon,Bengaluru,11:00 AM - 11:00 PM
+31,Royal Bakery,Bengaluru,11:30 AM - 10:30 PM
+32,Bombay Salad Co.,Bengaluru,10:00 AM - 12:00 AM
+33,Smoky Kathi House,Bengaluru,11:00 AM - 11:00 PM
+34,Punjabi Chowk,Bengaluru,10:00 AM - 12:00 AM
+35,Big Salad Co. - Andheri,Bengaluru,11:30 AM - 10:30 PM
+36,Bombay Handi,Bengaluru,24 Hours
+37,Royal Darbar,Hyderabad,
+38,Tasty Biryani House,Hyderabad,11:30 AM - 10:30 PM
+39,Green Pizza Co.,Hyderabad,11:00 AM - 11:00 PM
+40,Bombay Burger Joint,Hyderabad,09:00 AM - 10:00 PM
+41,Punjabi Dosa Corner,Hyderabad,24 Hours
+42,Green Wok,Hyderabad,11:00 AM - 11:59 PM
+43,Fresh Cake Studio,Hyderabad,24 Hours
+44,Royal Salad Co.,Hyderabad,11:00 AM - 11:59 PM
+45,Smoky Roll Station,Hyderabad,09:00 AM - 10:00 PM
+46,Tasty Chaat Corner,Hyderabad,11:00 AM - 11:00 PM
+47,Silver Pizzeria,Hyderabad,10:30 AM - 11:30 PM
+48,Desi Kitchen - Salt Lake,Hyderabad,10:30 AM - 11:30 PM
+49,Little Kitchen,Chennai,12:00 PM - 11:00 PM
+50,Urban Dum Pukht,Chennai,11:30 AM - 10:30 PM
+51,Grand Pizza Hub,Chennai,12:00 PM - 11:00 PM
+52,Big Grill,Chennai,11:00 AM - 11:00 PM
+53,Little Tiffins,Chennai,
+54,Urban Dragon,Chennai,
+55,Punjabi Bakery,Chennai,10:00 AM - 12:00 AM
+56,Golden Salad Co. - T Nagar,Chennai,11:00 AM - 11:59 PM
+57,Spice Rolls Junction,Chennai,09:00 AM - 10:00 PM
+58,Little Street Eats,Chennai,10:00 AM - 12:00 AM
+59,Golden Grill - Koramangala,Chennai,11:00 AM - 11:00 PM
+60,Urban Idli Cafe,Chennai,11:00 AM - 11:59 PM
+61,Silver Dhaba,Pune,08:00 AM - 09:00 PM
+62,Punjabi Dum Pukht,Pune,
+63,Namaste Pizza Co.,Pune,24 Hours
+64,Big Burger Joint - Kothrud,Pune,12:00 PM - 11:00 PM
+65,Fresh Dosa Corner,Pune,10:00 AM - 12:00 AM
+66,Classic Chopsticks,Pune,
+67,Silver Bakery,Pune,09:00 AM - 10:00 PM
+68,Big Greens,Pune,10:00 AM - 12:00 AM
+69,Grand Kathi House,Pune,12:00 PM - 11:00 PM
+70,Classic Chaat Corner,Pune,11:00 AM - 11:00 PM
+71,Punjabi Biryani House - Navrangpura,Pune,11:00 AM - 11:00 PM
+72,Namaste Bakery - Kothrud,Pune,10:30 AM - 11:30 PM
+73,Fresh Tales,Kolkata,09:00 AM - 10:00 PM
+74,Big Biryani Co.,Kolkata,12:00 PM - 11:00 PM
+75,Punjabi Pizzeria,Kolkata,07:00 AM - 10:00 PM
+76,Tasty Burger Barn - Kothrud,Kolkata,09:00 AM - 10:00 PM
+77,Tasty Idli Cafe,Kolkata,09:00 AM - 10:00 PM
+78,Tasty Wok Express,Kolkata,
+79,Urban Cake Studio - Navrangpura,Kolkata,11:30 AM - 10:30 PM
+80,Hungry Salad Co.,Kolkata,10:00 AM - 12:00 AM
+81,Fresh Roll Station,Kolkata,10:30 AM - 11:30 PM
+82,Royal Thela,Kolkata,08:00 AM - 09:00 PM
+83,Urban Bakery,Kolkata,12:00 PM - 11:00 PM
+84,Madras Idli Cafe,,09:00 AM - 10:00 PM
+85,Namaste Kitchen,Ahmedabad,24 Hours
+86,Bombay Dum Pukht - T Nagar,Ahmedabad,11:00 AM - 11:59 PM
+87,Royal Oven,Ahmedabad,11:00 AM - 11:00 PM
+88,Hungry Bites,Ahmedabad,10:30 AM - 11:30 PM
+89,Madras Dosa Corner,Ahmedabad,11:30 AM - 10:30 PM
+90,Classic Wok - Banjara Hills,Ahmedabad,07:00 AM - 10:00 PM
+91,Punjabi Sweet Tooth,Ahmedabad,24 Hours
+92,Namaste Salad Co.,Ahmedabad,10:00 AM - 12:00 AM
+93,Fresh Rolls Junction,Ahmedabad,10:00 AM - 12:00 AM
+94,Smoky Thela,Ahmedabad,11:30 AM - 10:30 PM
+95,Smoky Wok Express,Ahmedabad,10:30 AM - 11:30 PM
+96,Little Thela,Ahmedabad,11:30 AM - 10:30 PM
+97,Silver Tales,Jaipur,11:00 AM - 11:00 PM
+98,Bombay Dum Pukht,Jaipur,12:00 PM - 11:00 PM
+99,Spice Pizza Co.,Jaipur,10:00 AM - 12:00 AM
+100,Classic Burger Joint,Jaipur,07:00 AM - 10:00 PM
+101,Namaste Udupi,Jaipur,11:00 AM - 11:00 PM
+102,Tandoor Dragon,Jaipur,10:00 AM - 12:00 AM
+103,Punjabi Sweet Tooth,Jaipur,07:00 AM - 10:00 PM
+104,Grand Bowl - Kothrud,Jaipur,11:30 AM - 10:30 PM
+105,Fresh Rolls Junction - Navrangpura,Jaipur,
+106,Spice Thela,Jaipur,07:00 AM - 10:00 PM
+107,Namaste Dragon,Jaipur,09:00 AM - 10:00 PM
+108,Desi Oven,Jaipur,08:00 AM - 09:00 PM
+109,Golden Tales,Lucknow,10:00 AM - 12:00 AM
+110,Classic Biryani Co.,Lucknow,07:00 AM - 10:00 PM
+111,Big Pizza Hub,Lucknow,10:00 AM - 12:00 AM
+112,Big Grill,Lucknow,24 Hours
+113,Silver Dosa Corner - Powai,Lucknow,11:30 AM - 10:30 PM
+114,Grand Chopsticks,Lucknow,24 Hours
+115,Fresh Dessert Lab - Indiranagar,Lucknow,08:00 AM - 09:00 PM
+116,Big Salad Co.,Lucknow,11:30 AM - 10:30 PM
+117,Tandoor Rolls Junction,Lucknow,11:00 AM - 11:00 PM
+118,Smoky Thela,Lucknow,08:00 AM - 09:00 PM
+119,Classic Salad Co.,Lucknow,11:00 AM - 11:59 PM
+120,Classic Thela,Lucknow,09:00 AM - 10:00 PM
