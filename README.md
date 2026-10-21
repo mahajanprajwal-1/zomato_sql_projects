@@ -4,7 +4,7 @@ An end-to-end analytics case study for a Zomato-style food delivery platform. It
 
 ## Dashboard preview
 
-![Zomato Sales & Delivery Dashboard](assets/zomato-dashboard.png)
+![Zomato Sales & Delivery Dashboard](assets/dashboard.png)
 
 The dashboard brings core business indicators together in one view, with city and order-date filters, revenue trends, delivery status, restaurant and city revenue, and rider delivery volumes.
 
@@ -68,10 +68,5 @@ zomato_sqlProject/
 2. Configure the PostgreSQL connection for your local `zomato_db` database.
 3. Refresh the model to load your data.
 
-## Notes
-
-The dashboard screenshot shows a Pune filter selection and the date range visible in the report. The accompanying project notes flag the season definitions in Q22 and the date-relative filter in Q9 for review against the intended business definitions before interpreting those results.
-
----
 
 **Portfolio project** · Food delivery analytics · SQL + Power BI
