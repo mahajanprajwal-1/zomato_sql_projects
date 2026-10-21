@@ -20,7 +20,7 @@ The dashboard brings core business indicators together in one view, with city an
 
 The SQL analysis covers data quality, repeat and high-value customers, popular dishes, order timing, restaurant revenue, city trends, delivery gaps, cancellation rates, delivery duration, rider performance and earnings, customer lifetime value, monthly growth, and seasonal order volume.
 
-See [`queries.sql`](queries.sql) for the numbered questions and solutions.
+See [`queries.sql`](SQL_queries.sql) for the numbered questions and solutions.
 
 ## Dashboard metrics
 
