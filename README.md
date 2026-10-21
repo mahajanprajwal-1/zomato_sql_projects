@@ -1,18 +1,73 @@
 # zomato_sqlProject
 
-A PostgreSQL case-study project analyzing a Zomato-style food-delivery platform —
-data cleaning, customer behavior, restaurant performance, rider logistics, and
-time-based trends, solved as 22 real business questions written in SQL.
+An end-to-end analytics project on a Zomato-style food-delivery platform: a PostgreSQL
+case study (22 real business questions in SQL) plus an interactive Power BI dashboard
+built on the same database.
 
 ## About
 
-This project simulates the kind of SQL work a data analyst does at a food-delivery
-company: cleaning messy raw data, segmenting customers, measuring restaurant
-performance, analyzing delivery/rider efficiency, and spotting trends over time.
-Every query is written against a 5-table relational schema and answers a specific,
-stated business question — the same format used in real analytics interviews.
+This project simulates the kind of work a data analyst does at a food-delivery company:
+cleaning messy raw data, segmenting customers, measuring restaurant performance,
+analyzing delivery/rider efficiency, spotting trends over time, and presenting the
+results in a dashboard for business users.
 
-**Tech:** PostgreSQL · Window functions · CTEs · Conditional aggregation · Date/time logic
+- **SQL analysis:** every query is written against a 5-table relational schema and answers
+  a specific, stated business question, the same format used in real analytics interviews.
+- **Power BI dashboard:** a one-page executive overview connected directly to the
+  PostgreSQL database, with KPIs, trends and filters.
+
+**Tech:** PostgreSQL · Window functions · CTEs · Conditional aggregation · Date/time logic · Power BI · DAX · Power Query (M)
+
+## Dashboard
+
+An **Executive Overview** page that answers "how is the business performing?" at a glance.
+It connects to the `zomato_db` PostgreSQL database in Import mode.
+
+**Layout**
+
+```
+┌──────────────────────────────────────────────────────────────────────────┐
+│  ZOMATO SALES & DELIVERY DASHBOARD                                       │
+├──────────────────────────────────────────────────────────────────────────┤
+│  [ City ▾ ]   [ Order Date: from ── to ]                                 │
+├────────┬────────┬────────┬───────────┬───────────┬────────────────────────┤
+│Revenue │ Orders │  AOV   │ Delivery  │ Customers │ Restaurants            │
+│        │        │        │ Success % │           │                        │
+├────────┴────────┴────────┴───────────┴───────────┴────────────────────────┤
+│  Revenue Trend by Month (line)          │  Orders by Delivery Status      │
+│                                         │  (donut)                        │
+├─────────────────────┬───────────────────┴──┬───────────────────────────────┤
+│ Revenue by          │ Revenue by City      │ Delivered Orders by Rider     │
+│ Restaurant (bar)    │ (bar)                │ (bar)                         │
+└─────────────────────┴──────────────────────┴───────────────────────────────┘
+```
+
+**Filters**
+- City (dropdown)
+- Order Date (date range)
+
+**KPI cards**
+
+| KPI | Definition |
+|---|---|
+| Total Revenue | Sum of `orders.total_amount` |
+| Total Orders | Distinct count of `order_id` |
+| Avg Order Value | Total Revenue ÷ Total Orders |
+| Delivery Success % | Delivered deliveries ÷ all deliveries |
+| Total Customers | Distinct count of `customer_id` |
+| Total Restaurants | Distinct count of `restaurant_id` |
+
+**Visuals**
+- **Revenue Trend by Month:** line chart of revenue over time
+- **Orders by Delivery Status:** donut chart showing the delivered / not-delivered split
+- **Revenue by Restaurant:** which restaurants earn the most
+- **Revenue by City:** geographic revenue split
+- **Delivered Orders by Rider:** rider-level delivery volume
+
+**Data model:** star schema with `orders` as the central fact table, linked to `customers`
+and `restaurants`; `deliveries` links `orders` to `riders`. All metrics are DAX measures
+organized into *Key Measures* and *Delivery Measures* folders, with a custom Zomato-branded
+theme applied across the report.
 
 ## Schema
 
@@ -27,7 +82,7 @@ deliveries   (delivery_id, order_id, rider_id, delivery_time, delivery_status, .
 
 ## How this is organized
 
-All queries live in [`queries.sql`](./queries.sql), numbered Q1–Q18, each preceded by
+All queries live in [`queries.sql`](./queries.sql), numbered Q1–Q22, each preceded by
 the business question it answers as a SQL comment block — same order they were solved in.
 
 | # | Question | SQL Pattern used |
@@ -76,6 +131,7 @@ A few queries had bugs caught and corrected before being added here — noted in
 
 ## Tools and skills demonstrated
 
+**SQL**
 - Data cleaning (`UPDATE`, `DELETE`, `NULL` handling)
 - Joins (`INNER`, `LEFT`) across a 5-table schema
 - `GROUP BY` / `HAVING` with multiple aggregate conditions
@@ -84,6 +140,13 @@ A few queries had bugs caught and corrected before being added here — noted in
 - CTEs, including multi-CTE chains
 - Date/time arithmetic, including an overnight-delivery edge case
 - Business-metric design: AOV, CLV, cancellation ratio, cohort segmentation
+
+**Power BI**
+- Connecting Power BI to a live PostgreSQL database (Power Query / M)
+- Star-schema data modeling and relationships
+- DAX measures with number formatting and organized display folders
+- Dashboard design: KPI cards, trend and breakdown charts, slicers, custom brand theme
+- Version-control-friendly project format (PBIP / PBIR)
 
 ## Known open items / things to revisit
 
@@ -95,17 +158,28 @@ A few queries had bugs caught and corrected before being added here — noted in
   calendar), and everything else falls into `ELSE 'Winter'` — meaning Jan–Mar, Sep–Dec
   are *all* lumped into "Winter." Confirm this matches the actual business definition of
   the three seasons before relying on it.
+- **Dashboard:** the restaurant and rider bar charts show every item; a Top 10 filter would
+  keep them readable as the data grows.
 
 ## Project structure
 
 ```
 zomato_sqlProject/
-├── README.md       -- this file
-└── queries.sql      -- all 22 questions + solutions, in solved order
+├── README.md                          -- this file
+├── queries.sql                        -- all 22 questions + solutions, in solved order
+├── zomato_dashboard.pbip              -- Power BI project (open this file)
+├── zomato_dashboard.Report/           -- report pages, visuals, theme
+└── zomato_dashboard.SemanticModel/    -- tables, relationships, DAX measures
 ```
 
 ## How to run this locally
 
+**SQL queries**
 1. Install PostgreSQL (or use any Postgres-compatible environment, e.g. Supabase, Neon, or a local Docker container).
 2. Create the 5 tables (`customers`, `restaurants`, `orders`, `riders`, `deliveries`) matching the schema above, and load your data.
 3. Run `queries.sql` top to bottom, or jump to any numbered question — each is self-contained.
+
+**Dashboard**
+1. Install Power BI Desktop and enable *Options → Preview features → Power BI Project (.pbip) save option*.
+2. Make sure the `zomato_db` database from the steps above is running on `localhost`.
+3. Open `zomato_dashboard.pbip`, enter your PostgreSQL credentials when prompted, and click **Refresh**.

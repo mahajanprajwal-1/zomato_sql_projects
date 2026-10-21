@@ -1,0 +1,55 @@
+table restaurants
+	lineageTag: 3d8e6a76-c46e-440d-9471-b5360b9439b1
+
+	/// Distinct count of partner restaurants.
+	measure 'Total Restaurants' = DISTINCTCOUNT(restaurants[restaurant_id])
+		formatString: #,0
+		displayFolder: Key Measures
+		lineageTag: 8fd62656-0f6a-4c8c-9700-def42f20164d
+
+	column restaurant_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6665fc11-8dfa-4443-ba2f-5fa33ee75920
+		summarizeBy: none
+		sourceColumn: restaurant_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column restaurant_name
+		dataType: string
+		lineageTag: 2a56b49c-62d5-44a6-9c5a-fa4e18bd0568
+		summarizeBy: none
+		sourceColumn: restaurant_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: d73aaa34-fa25-45a7-ba3b-69de828b57d9
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column opening_hours
+		dataType: string
+		lineageTag: 9fc8b386-2610-4e39-96e9-d90a5806f436
+		summarizeBy: none
+		sourceColumn: opening_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	partition restaurants = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "zomato_db"),
+				    public_restaurants = Source{[Schema="public",Item="restaurants"]}[Data]
+				in
+				    public_restaurants
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

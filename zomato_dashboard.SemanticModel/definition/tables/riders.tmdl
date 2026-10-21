@@ -1,0 +1,55 @@
+table riders
+	lineageTag: 24ac7805-d611-4689-a3b8-aff817efa2b5
+
+	/// Distinct count of delivery riders.
+	measure 'Total Riders' = DISTINCTCOUNT(riders[rider_id])
+		formatString: #,0
+		displayFolder: Key Measures
+		lineageTag: fdeeb8e7-7263-4bf2-9cd3-cdcbe6897a2d
+
+	column rider_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 874a99fb-f580-4dd1-b417-536a90be5ac7
+		summarizeBy: none
+		sourceColumn: rider_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column rider_name
+		dataType: string
+		lineageTag: df20d8d1-4817-407e-81fb-04388e5dfa01
+		summarizeBy: none
+		sourceColumn: rider_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column sign_up
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f6ac91df-e6a0-4d6e-8aa0-4acb613ddca1
+		summarizeBy: none
+		sourceColumn: sign_up
+
+		variation Variation
+			isDefault
+			relationship: 51a9da7e-1d69-4a1d-b934-7a8abadcf082
+			defaultHierarchy: LocalDateTable_3ad8e36b-17bd-48c6-a67a-ca602bd6a898.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition riders = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "zomato_db"),
+				    public_riders = Source{[Schema="public",Item="riders"]}[Data]
+				in
+				    public_riders
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

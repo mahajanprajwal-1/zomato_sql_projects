@@ -1,0 +1,39 @@
+relationship 26c0e82c-cd63-4f89-8226-9ef1561240bd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: customers.reg_date
+	toColumn: LocalDateTable_fbc86728-fc62-4d27-977a-11294324cf0e.Date
+
+relationship 51a9da7e-1d69-4a1d-b934-7a8abadcf082
+	joinOnDateBehavior: datePartOnly
+	fromColumn: riders.sign_up
+	toColumn: LocalDateTable_3ad8e36b-17bd-48c6-a67a-ca602bd6a898.Date
+
+relationship 7cd69945-01d9-4cc4-9f28-62ccfee3d3bc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: orders.order_date
+	toColumn: LocalDateTable_da070a8a-9c43-42b6-a4e9-047f307eff20.Date
+
+relationship f3df0ff6-3c41-4d9d-9e2b-7a7c0ed6e619
+	fromColumn: orders.restaurant_id
+	toColumn: restaurants.restaurant_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship edc6a666-acab-40a1-9d39-31878a5a3e83
+	fromColumn: deliveries.rider_id
+	toColumn: riders.rider_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship 38aff9af-d841-4042-807f-b30687fdd68e
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: deliveries.order_id
+	toColumn: orders.order_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship c6535374-cbe5-6942-6dc9-cb5865fb61b7
+	fromColumn: orders.customer_id
+	toColumn: customers.customer_id
+

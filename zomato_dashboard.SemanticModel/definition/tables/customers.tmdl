@@ -1,0 +1,55 @@
+table customers
+	lineageTag: a8e00837-5460-4e15-ac66-5c66fad23224
+
+	/// Distinct count of registered customers.
+	measure 'Total Customers' = DISTINCTCOUNT(customers[customer_id])
+		formatString: #,0
+		displayFolder: Key Measures
+		lineageTag: 535b789f-9265-442d-aebf-6aa5f0343447
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: addb630a-d253-4485-86a5-3ef0b3ae677f
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_name
+		dataType: string
+		lineageTag: b362cfda-6dbe-414b-996d-b215f70bb118
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column reg_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d74beaf7-b701-4087-b670-41ec733cafd0
+		summarizeBy: none
+		sourceColumn: reg_date
+
+		variation Variation
+			isDefault
+			relationship: 26c0e82c-cd63-4f89-8226-9ef1561240bd
+			defaultHierarchy: LocalDateTable_fbc86728-fc62-4d27-977a-11294324cf0e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition customers = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "zomato_db"),
+				    public_customers = Source{[Schema="public",Item="customers"]}[Data]
+				in
+				    public_customers
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

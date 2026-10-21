@@ -1,0 +1,126 @@
+table orders
+	lineageTag: 79de8254-5583-4956-8fec-33a61ac08432
+
+	/// Distinct count of orders placed.
+	measure 'Total Orders' = DISTINCTCOUNT(orders[order_id])
+		formatString: #,0
+		displayFolder: Key Measures
+		lineageTag: 37d80cbc-9a14-48de-9d18-9f059986b87f
+
+	/// Sum of order value (total_amount) in INR.
+	measure 'Total Revenue' = SUM(orders[total_amount])
+		formatString: "₹"#,0
+		displayFolder: Key Measures
+		lineageTag: 18263768-362d-4aab-8911-d17efa53494e
+
+	/// Total Revenue divided by Total Orders.
+	measure 'Avg Order Value' = DIVIDE([Total Revenue], [Total Orders])
+		formatString: "₹"#,0.00
+		displayFolder: Key Measures
+		lineageTag: 9ede6b53-e65b-4dc2-80be-ecac81588f49
+
+	/// Number of deliveries with status = Delivered.
+	measure 'Delivered Orders' = CALCULATE(COUNTROWS(deliveries), deliveries[delivery_status] = "Delivered")
+		formatString: #,0
+		displayFolder: Delivery Measures
+		lineageTag: 057901eb-84d2-40e5-b73a-b74dd09488b5
+
+	/// Delivered Orders as a share of all deliveries.
+	measure 'Delivery Success %' = DIVIDE([Delivered Orders], COUNTROWS(deliveries))
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Delivery Measures
+		lineageTag: a0f01c97-bb67-4cb7-922f-a6d84c0df2b2
+
+	column order_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 3837dd23-8a72-4613-a454-3661d842b844
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: f04c561b-c476-4bc2-a179-87595bc9b20d
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column restaurant_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 7b4ee5a7-0737-4b87-bec8-d9972574d155
+		summarizeBy: none
+		sourceColumn: restaurant_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_item
+		dataType: string
+		lineageTag: ff0f3f07-2095-4939-8c94-e87e98aaefdb
+		summarizeBy: none
+		sourceColumn: order_item
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5a483dc0-906e-420e-80c8-97bb3d2ad0b4
+		summarizeBy: none
+		sourceColumn: order_date
+
+		variation Variation
+			isDefault
+			relationship: 7cd69945-01d9-4cc4-9f28-62ccfee3d3bc
+			defaultHierarchy: LocalDateTable_da070a8a-9c43-42b6-a4e9-047f307eff20.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column order_time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 7a807508-4260-4fd4-a1aa-3ba74f7d7fcb
+		summarizeBy: none
+		sourceColumn: order_time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column order_status
+		dataType: string
+		lineageTag: 4532f185-04aa-4af8-aac5-973e6416901a
+		summarizeBy: none
+		sourceColumn: order_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_amount
+		dataType: double
+		lineageTag: 90622bb4-1f2f-4c7b-82ff-5ad60de4bf18
+		summarizeBy: sum
+		sourceColumn: total_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition orders = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "zomato_db"),
+				    public_orders = Source{[Schema="public",Item="orders"]}[Data]
+				in
+				    public_orders
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

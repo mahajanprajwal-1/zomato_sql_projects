@@ -1,0 +1,74 @@
+table deliveries
+	lineageTag: 81c8d51e-951e-4d8c-991b-20cf25a0f37a
+
+	column delivery_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f8893e1-2ab1-422f-abc1-5118f4ef3db4
+		summarizeBy: sum
+		sourceColumn: delivery_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_id
+		dataType: int64
+		formatString: 0
+		lineageTag: cd406b77-af3b-4973-8c43-3c084f61c195
+		summarizeBy: none
+		sourceColumn: order_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivery_status
+		dataType: string
+		lineageTag: e5e150ed-843c-43dc-9990-a2c22e83c4e6
+		summarizeBy: none
+		sourceColumn: delivery_status
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivery_time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: f045bd61-a2b4-40bc-9011-6ab3b8a621a3
+		summarizeBy: none
+		sourceColumn: delivery_time
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column rider_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 98ccebba-97ad-4afa-9c08-dc3720825e11
+		summarizeBy: none
+		sourceColumn: rider_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition deliveries = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "zomato_db"),
+				    public_deliveries = Source{[Schema="public",Item="deliveries"]}[Data]
+				in
+				    public_deliveries
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
